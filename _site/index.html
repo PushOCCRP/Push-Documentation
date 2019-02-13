@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Home | Push Project Documentation</title>
+<meta name="generator" content="Jekyll v3.7.2" />
+<meta property="og:title" content="Home" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Push Project is an open source mobile app ecosystem for small and medium sized news organizations. Start here if you’re setting up a new organization." />
+<meta property="og:description" content="The Push Project is an open source mobile app ecosystem for small and medium sized news organizations. Start here if you’re setting up a new organization." />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Push Project Documentation" />
+<script type="application/ld+json">
+{"name":"Push Project Documentation","description":"The Push Project is an open source mobile app ecosystem for small and medium sized news organizations. Start here if you’re setting up a new organization.","@type":"WebSite","url":"http://localhost:4000/","headline":"Home","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="description" content="The Push Project is an open source mobile app ecosystem for small and medium sized news organizations. Start here if you're setting up a new organization."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Push Project Documentation</h1>
+      <h2 class="project-tagline">The Push Project is an open source mobile app ecosystem for small and medium sized news organizations. Start here if you're setting up a new organization.</h2>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <h1 id="introduction">Introduction</h1>
+<hr />
+<p>The Push Project is an open source mobile app ecosystem for small and medium sized news organizations. If you’re a news organization
+that doesn’t have the time or money to creat your own app but want all the functionality that you would expect, this is probably a
+project you can use.</p>
+
+<p>Push does <em>not</em> replace your CMS, it augments it. If you never want to just accept the default settings you should never have to do
+anything to allow the Push apps to work perfectly fine.</p>
+
+<h1 id="parts-of-the-project">Parts of the Project</h1>
+<hr />
+<p>The push project consists of a couple of different portions, each of which operates as its own standalone repository (for the most part).
+The full structure and its rational is described <a href="/structure">here</a>, but a brief summary of the big ones are below.</p>
+
+<h3 id="the-backend-link">The Backend <a href="https://www.github.com/pushoccrp/push-backend">link</a></h3>
+
+<p>This is the heart and soul of the Push ecosystem. It is the ringleader and though which all data and information flows. It handles three
+things: the injestion of data from various CMS’s, the administration of P=ush system, and the serving of content to the client apps. From
+an administrator’s point of viewl users are managed here, push notifications are sent, analytics are viewed. It’s main purpose though is
+to serve up a standard JSON API that the iOS and Android apps can easily pull data from.</p>
+
+<p>This is the first thing you’ll have to setup.</p>
+
+<h3 id="cms-plugins">CMS Plugins</h3>
+<p>The backend has to communicate with your company’s CMS somehow, and this is how it’s done. Right now there’s support for the following
+standard CMS’s (plus a few one-offs, but that won’t be discussed here.)</p>
+
+<ul>
+  <li><a href="https://github.com/PushOCCRP/Push-Wordpress"><strong>Wordpress</strong></a>
+    <ul>
+      <li>Support is excellent for PHP &gt;4.3. Wordpress may support this very old version of PHP but we don’t, and really, you should upgreade ASAP.</li>
+    </ul>
+  </li>
+  <li><strong>BLOX</strong>
+    <ul>
+      <li>In development right now, but there is limited support</li>
+      <li>No plugin needed, since it provides its own API</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/PushOCCRP/Push-Joomla-REST"><strong>Joomla</strong></a>
+    <ul>
+      <li>An implementation that is customized for OCCRP. It should work for most installations with a littl massaging. This is the oldest
+  plugin and may not support the newest features of Push.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>You can also develop your own plugin for your own CMS. Further instructions on that can be found <a href="/plugin-development">here</a>.</p>
+
+<h3 id="apps">Apps</h3>
+<p>The bread and butter, and the real reason we’re all here. All the apps are at 98% feature parity and include (but are not limited) to the following:</p>
+<ul>
+  <li>Reading articles</li>
+  <li>Viewing articles by category</li>
+  <li>Searching archives</li>
+  <li>Push notifications</li>
+  <li>Analytics</li>
+  <li>Video player (supporting YouTube right now)</li>
+  <li>Social media sharing</li>
+  <li>Donations support</li>
+  <li>One-off events</li>
+  <li>Subscription login support</li>
+</ul>
+
+<p>There are individual repositories for each of the supported platforms. These repositories, by themselves, will not compile (or even open in
+their respective IDEs). First you must run the <a href="https://github.com/pushoccrp/push-generator">generator</a>. This will customize the code
+so that it fits your organization.</p>
+
+<h4 id="ios-link">iOS <a href="https://www.github.com/pushoccrp/push-ios">link</a></h4>
+<p>The iOS app is written in native Objective-C code and supports iOS &gt;10. It is optimized for only the iPhone.</p>
+
+<p>I addition to the features above the code contains beta-level censorship circuvention technology that auto connects to the TOR network
+in the case of certain network conditions.</p>
+
+<h4 id="android-link">Android <a href="https://www.github.com/pushoccrp/push-android">link</a></h4>
+<p>The Android app is written in native Java code and supports Android &gt;4.3.3.</p>
+
+<h3 id="generator">Generator</h3>
+<p>The generator is where customization for the apps is done. The app code itself should never be touched in production setups, and instead completely handled
+through the generator.</p>
+
+<h1 id="setup">Setup</h1>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>These instructions are for a production deployment of the Push software. For development instructions please see <a href="/development">this page</a></p>
+
+<ol>
+  <li>Make sure the Backend supports your CMS.</li>
+  <li>Install any appropriate plugins
+    <ul>
+      <li><a href="https://github.com/PushOCCRP/Push-Wordpress">Wordpress instructions</a></li>
+      <li><a href="https://github.com/PushOCCRP/Push-Joomla-REST">Joomla instructions</a></li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/pushoccrp/push-backend">Set up the backend</a></li>
+  <li><a href="https://github.com/pushoccrp/push-generator">Set up and run the generator</a></li>
+  <li>The generator should automatically upload your apps to the app store (FURTHER INSTRUCTIONS TBD)</li>
+</ol>
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>
